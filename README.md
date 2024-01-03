@@ -1,2 +1,1 @@
-# recipe-app
-MERN recipe app
+# MERN recipe app
