@@ -7,4 +7,4 @@ const app = express();
 app.use(express.json()); // convert front-end data to json
 app.use(cors()); // set communication between front and backend
 
-app.listen();
+app.listen(3001, () => console.log("server started! trying to make changes"));
