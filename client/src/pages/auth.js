@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 export const Auth = () => {
     return <div className="auth">
@@ -21,7 +22,7 @@ const Login = () => {
                 password,
             });
             console.log(response);
-            alert('Registration compoleted. Please log in.');
+            alert('Registration completed. Please log in.');
         } catch (err) {
             console.error(err);
         }
