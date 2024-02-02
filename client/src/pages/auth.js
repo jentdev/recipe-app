@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export const Auth = () => {
     return <div className="auth">
@@ -14,6 +15,12 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    // call userCookies hook, define name of cookie
+    const [_, setCookies] = useCookies(['access_token']);
+    // don't need access to a cookie, only setCookies function
+
+    const navigate = useNavigate();
+
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -21,6 +28,15 @@ const Login = () => {
                 username,
                 password,
             });
+            // set response we got back as cookie
+            // sent back a json with a token field from server's login route
+            setCookies('access_token', response.data.token);
+            // store user id inside local storage for quick access
+            window.localStorage.setItem('userID', response.data.userID);
+            // redirect to home
+            // window.location.pathname('/');
+            // better to use useNavigate from react-router-dom
+            navigate('/');
             console.log(response);
             alert('Registration completed. Please log in.');
         } catch (err) {
