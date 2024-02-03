@@ -8,7 +8,7 @@ export const Auth = () => {
     </div>
 };
 
-// don't put in components folder because not shared between pages/only used in auth page
+// don't need to put in components folder because not shared between pages/only used in auth page
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ const Login = () => {
                 password,
             });
             console.log(response);
-            alert('Registration compoleted. Please log in.');
+            alert('Logged in.');
         } catch (err) {
             console.error(err);
         }
