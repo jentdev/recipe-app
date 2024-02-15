@@ -55,3 +55,17 @@ router.post('/login', async(req, res) => {
 });
 
 export { router as userRouter }; // export everything as a userRouter object
+
+// middleware
+export const verifyToken = (req, res, next) => {
+    const token = req.headers.authorization;
+    if (token) {
+        jwt.verify(token, secret, (err) => {
+            if (err) return res.sendStatus(403); // not authorized
+            next();
+        });
+    }
+    else {
+      res.sendSttus(401);  
+    }
+};
