@@ -66,6 +66,6 @@ export const verifyToken = (req, res, next) => {
         });
     }
     else {
-      res.sendSttus(401);  
+      res.sendStatus(401);
     }
 };
